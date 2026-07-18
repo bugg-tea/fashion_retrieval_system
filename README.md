@@ -6,14 +6,6 @@ language descriptions of *what* someone is wearing, *where* they are, and the
 compositionality ("red shirt, blue pants" vs "blue shirt, red pants") and
 fine-grained fashion attributes.
 
-> **⚠️ If you're upgrading an existing checkout of this repo:** the old
-> `.env.example` in earlier copies of this project had a real-looking API key
-> committed to it (`GEMINI_API_KEY=AQ.Ab8...`), not a placeholder. If you ever
-> committed that file to a public repo, **rotate/delete that key now** at
-> https://aistudio.google.com/app/apikey and check `git log -- .env.example`
-> for exposure. The version of `.env.example` in this checkout has been fixed
-> to use an obvious `your-key-here` placeholder, and `.gitignore` now excludes
-> your real `.env` so this can't happen again from this repo going forward.
 
 ## Why not just CLIP?
 
