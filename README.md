@@ -1,10 +1,10 @@
 # Multimodal Fashion & Context Retrieval
 
-Glance ML Internship Assignment — submission by [your name]
+
 
 This is a search engine for fashion photos. You type something like *"a
 person in a bright yellow raincoat"* or *"casual weekend outfit for a city
-walk"* and it finds matching images from a database of ~800 photos. Nothing
+walk"* and it finds matching images from a database of 4000 photos. Nothing
 fancy on the infra side (FAISS, flat file, done) — most of the effort went
 into making the *matching* actually work for fashion, which turned out to be
 a more interesting problem than I expected going in.
@@ -58,9 +58,7 @@ on disk (`data/index/clip.index` + `metadata.jsonl`). You could delete
 
 ## The dataset
 
-I used a ~800 image sample streamed from `detection-datasets/fashionpedia`
-on Hugging Face (`scripts/download_dataset.py`, no need to pull the full
-3.5GB set). One thing worth flagging honestly: Fashionpedia is mostly
+I used a 4000 image sample streamed from https://github.com/cvdfoundation/fashionpedia?tab=readme-ov-file#images. One thing worth flagging honestly: Fashionpedia is mostly
 studio/runway shots, and the assignment specifically wants environment
 diversity — office, street, park, home. So I supplemented it with a couple
 hundred general lifestyle photos so the "where" part of the query actually
@@ -110,7 +108,7 @@ command picks up from a checkpoint instead of starting over.
 
 ```bash
 pip install -r requirements.txt
-python scripts/download_dataset.py --n 800 --out data/images/fashionpedia
+(download data set into this folder :- data/images/fashionpedia)
 python -m indexer.build_index --data_dir data/images --workers 4 --batch_size 32
 ```
 
