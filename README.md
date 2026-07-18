@@ -100,39 +100,9 @@ fully on local, free, open-source models without it, just with slightly
 lower precision on paraphrased queries. Every model download (CLIP, BLIP x2,
 SegFormer) is free and pulled automatically from Hugging Face on first run.
 
-## Setup
 
-```bash
-git clone <your-repo-url>
-cd fashion-retrieval
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # optional: add GEMINI_API_KEY if you want the LLM stages
-```
 
-`mediapipe` occasionally lags behind the newest Python versions — if install
-fails, use Python 3.10 or 3.11. `torchvision` is now a required dependency
-(needed by the SegFormer image processor, not just an optional extra).
 
-**CPU-only machines:** everything in this pipeline runs on CPU, including
-SegFormer garment segmentation — see "Building the index" below for the
-`--workers` / `--legacy-color` tradeoffs that matter most for a modest CPU.
-
-## Getting the dataset
-
-```bash
-pip install datasets
-python scripts/download_dataset.py --n 800 --out data/images/fashionpedia
-```
-
-This streams a sample of `detection-datasets/fashionpedia` from Hugging Face
-(no need to download the full ~3.5GB dataset) and saves plain JPEGs. Fashionpedia
-is mostly studio/runway photography. The assignment explicitly wants
-environment diversity (office / street / park / home), so add a few hundred
-general lifestyle photos into `data/images/` too — any folder structure
-works, the indexer walks the tree recursively. A quick, fully free way to do
-this: use any small Creative-Commons "people in places" collection, or your
-own photos.
 
 ## Building the index (Part A)
 
