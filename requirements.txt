@@ -1,0 +1,27 @@
+torch>=2.1
+torchvision>=0.16   # required by SegformerImageProcessor (indexer/garment_analysis.py)
+transformers>=4.40
+
+faiss-cpu>=1.7.4
+Pillow>=10.0
+numpy>=1.24,<2.0
+scikit-learn>=1.3
+mediapipe>=0.10    # legacy garment-color fallback (indexer/color_utils.py); see --legacy-color
+tqdm>=4.66
+
+# Only needed for scripts/download_dataset.py
+datasets>=2.19
+
+# Optional -- only needed if you set GEMINI_API_KEY for query-parsing fallback
+# and final-stage LLM verification. The system runs fully without it.
+# NOTE: this is the actively-maintained SDK (`from google import genai`) --
+# the older `google-generativeai` package is deprecated as of 2026, do not
+# install that one instead.
+google-genai>=0.3
+
+# All models used are downloaded automatically on first run via
+# huggingface_hub (a transitive dependency of `transformers`), and cached
+# locally afterwards -- no manual download step, no paid API keys required
+# for anything except the fully-optional Gemini features above. Approximate
+# one-time download sizes: CLIP ~600MB, BLIP caption ~1GB, BLIP ITM ~1.9GB,
+# SegFormer clothes segmentation ~110MB.

@@ -1,0 +1,27 @@
+# Secrets -- never commit your real .env (only .env.example should be tracked)
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Dataset images and everything the indexer produces -- these are large,
+# regenerable, and machine-specific (absolute paths get baked into
+# metadata.jsonl). Re-run indexer/build_index.py to recreate them.
+data/images/*
+!data/images/.gitkeep
+data/index/*
+!data/index/.gitkeep
+
+# Hugging Face / torch model cache, if it ends up inside the repo dir
+.cache/
+*.pt
+*.bin
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
